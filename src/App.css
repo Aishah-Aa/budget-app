@@ -1,10 +1,18 @@
-.App {
-  text-align: center;
+body {
+  margin: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+  background-color: purple;
+  padding: 5px 8px;
+  
+}
+.btn:hover {
+  background-color:indigo;
+}
+
+.App {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
