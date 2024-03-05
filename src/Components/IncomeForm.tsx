@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 
- export function IncomeForm({handleChangeSource,handleSubmit}) {
+ export function IncomeForm({handleChangeSource,handleSubmit,handleChangeAmount}) {
     
     return(
         <form onSubmit={handleSubmit}>
@@ -17,7 +17,9 @@ import { Button } from "./Button";
 
             <div>
                 <label htmlFor='amount'>Income amount</label>
-                <input type='text' id='amount' name='amount' placeholder='Enter Amount here'/>
+                <input type='text' id='amount' name='amount' placeholder='Enter Amount here'
+                onChange={handleChangeAmount}
+                />
              </div>
 
              <div>
