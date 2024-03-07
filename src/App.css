@@ -1,22 +1,28 @@
+h1{
+  color:#400a58;
+  margin-left: 12px;
+
+}
+
 body {
-  margin: 2rem;
+  margin: 20px;
+  background-color:#7D78A3;
+  
 }
 
 .btn {
   background-color: purple;
   padding: 5px 8px;
   margin-top: 12px;
+  margin-left: 20px;
   
 }
 .btn:hover {
   background-color:indigo;
+  cursor: pointer;
 }
 
-.App {
-  text-align:left;
-  padding-left: 20px;
-  margin-right: 10px;
-}
+
 
 
 
