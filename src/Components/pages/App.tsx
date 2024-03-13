@@ -1,22 +1,15 @@
 import { useState } from "react";
 import { Expense, ExpenseWrapper } from "../ExpenseWrapper";
 import { Income, IncomeWrapper } from "../IncomeWrapper";
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
+import { SavingWrapper } from "../SavingWrapper";
 
 function App() {
   const [incomes, setIncomes] = useState<Income[]>([]);
   const [expenses, setExpenses] = useState<Expense[]>([]);
   console.log("expenses:", expenses);
-
-  const handleDeleteIncome = (id: number) => {
-    const updatedIncomes = incomes.filter((income) => {
-      return income.id !== id
-      })
-    setIncomes(updatedIncomes)
-  }
-
 
   let totalIncome = 0;
   incomes.forEach((income) => {
@@ -33,21 +26,29 @@ function App() {
   return (
     <div className="App">
       <h1>Budget App</h1>
-       <Grid container>
-        < Grid xs={12} md={6}>
-          <IncomeWrapper incomes={incomes} 
-          setIncomes={setIncomes}
-          handleDelete={handleDeleteIncome}  /> 
-      </ Grid>
-      
-      <Grid xs={12} md={6}>
-      <ExpenseWrapper expenses={expenses} setExpenses={setExpenses} />
-         </Grid>
-      </Grid> 
+      <Grid container>
+        <Grid xs={12} md={4}>
+          <IncomeWrapper
+            incomes={incomes}
+            setIncomes={setIncomes}
+          />
+        </Grid>
+
+        <Grid xs={12} md={4}>
+          <ExpenseWrapper
+            expenses={expenses}
+            setExpenses={setExpenses}
+          />
+        </Grid>
+
+        <Grid xs={12} md={4}>
+          <SavingWrapper />
+        </Grid>
+      </Grid>
       <Typography>Balance:{balance}</Typography>
-      <Link to= 'about'>About us</Link> 
+      <Link to="about">About us</Link>
     </div>
-  )
+  );
 }
 
 export default App;

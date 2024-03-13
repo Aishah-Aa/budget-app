@@ -44,32 +44,14 @@ inputs
         )
       })
     }
-      <Grid xs={12}>
-    <TextField
-          name="source"
-          id="source"
-          label="Income Source"
-          variant="outlined"
-          onChange={handleChnage}
-        />
-     </Grid>
-         <Grid xs={12}>
-          <TextField
-          name="amount"
-          id="amount"
-          label="Income Amount"
-          variant="outlined"
-          onChange={handleChnage}
-          />
-          </Grid> 
-               <Grid xs={12}>
-         <LocalizationProvider dateAdapter={AdapterDayjs}>   
-            <DatePicker onChange={handleChangeDate} />
-        </LocalizationProvider>
-              </Grid>
-                   <Grid xs={12}>
-                   <Button variant='contained' onClick={handleSubmit}> Add </Button> 
-                   </Grid>
+     <Grid xs={12}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>   
+           <DatePicker onChange={handleChangeDate} />
+       </LocalizationProvider>
+      </Grid>
+        <Grid xs={12}>
+            <Button variant='contained' onClick={handleSubmit}> Add </Button> 
+        </Grid>
    </Grid>
     </form>
   );

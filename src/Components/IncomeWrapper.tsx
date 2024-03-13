@@ -5,10 +5,10 @@ import { ListItems } from "./ListItems";
 import dayjs, { Dayjs } from "dayjs";
 
 export type Income = {
-  id: string| number;
+  id: string;
   source: string;
   amount: number;
-  date: string |null;
+  date: string | null;
 };
 
 const INCOME_INPUTS = [
@@ -16,19 +16,22 @@ const INCOME_INPUTS = [
     name: "source",
     id: "source",
     label: "Income Source",
-  }
+  },
+  {
+    name: "amount",
+    id: "amount",
+    label: "Income Amount",
+  },
 ];
-
 
 type IncomeWrapperProps = {
   incomes: Income[];
   setIncomes: (key: Income[]) => void;
-  handleDelete: (key: number | string)=> void
 };
 
-export function IncomeWrapper({incomes, setIncomes, handleDelete}: IncomeWrapperProps) {
+export function IncomeWrapper({ incomes, setIncomes }: IncomeWrapperProps) {
   const [income, setIncome] = useState<Income>({
-    id: +new Date(),
+    id: new Date().toLocaleDateString(),
     source: "",
     amount: 0,
     date: new Date().toLocaleDateString(),
@@ -55,13 +58,19 @@ export function IncomeWrapper({incomes, setIncomes, handleDelete}: IncomeWrapper
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const newIncome: Income = {
-      id: +new Date(),
+      id: new Date().toLocaleDateString(),
       source: income.source,
       amount: +income.amount,
       date: income.date,
     };
 
     setIncomes([...incomes, newIncome]);
+  };
+  const handleDelete = (id: string) => {
+    const updatedIncomes = incomes.filter((income) => {
+      return income.id !== id;
+    });
+    setIncomes(updatedIncomes);
   };
 
   return (

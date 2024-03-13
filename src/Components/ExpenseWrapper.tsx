@@ -5,7 +5,7 @@ import { ListItems } from "./ListItems";
 import { Dayjs } from "dayjs";
 
 export type Expense = {
-  id: string | number;
+  id: string;
   source: string;
   amount: number;
   date: string | null;
@@ -13,19 +13,23 @@ export type Expense = {
 
 const EXPENSE_INPUTS = [
   {
+    name: "source",
+    id: "source",
+    label: "Expense Source",
+  },
+  {
     name: "amount",
     id: "amount",
     label: "Expense Amount",
-  }
+  },
 ];
 
 type ExpenseWrapperProps = {
   expenses: Expense[];
   setExpenses: (key: Expense[]) => void;
-  handleDelete: (key:number | string) => void;
 };
 
-export function ExpenseWrapper({expenses, setExpenses, handleDelete}: ExpenseWrapperProps) {
+export function ExpenseWrapper({ expenses, setExpenses }: ExpenseWrapperProps) {
   const [expense, setExpense] = useState({
     id: +new Date(),
     source: "",
@@ -61,6 +65,12 @@ export function ExpenseWrapper({expenses, setExpenses, handleDelete}: ExpenseWra
     };
 
     setExpenses([...expenses, newExpense]);
+  };
+  const handleDelete = (id: string) => {
+    const updatedExpenses = expenses.filter((expense) => {
+      return expense.id !== id;
+    });
+    setExpenses(updatedExpenses);
   };
 
   return (
