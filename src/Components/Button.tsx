@@ -1,13 +1,13 @@
-import Button from "@mui/material/Button";
+import React from "react";
 
 type ButtonProp = {
-  label: string;
   color?: string;
+  variant?: string;
+  type?: string;
+  label: string;
 };
-export function Button({ label }: ButtonProp) {
+export function Button({ color, variant, type, label }: ButtonProp) {
   return (
-    <Button color="success" type="submit">
-      {label}
-    </Button>
+    <Button color={color} variant={variant} type={type} label={label}></Button>
   );
 }
